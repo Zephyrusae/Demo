@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * { margin:0; padding: 0; }
+        ul {
+            list-style-type: none;
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        .hd {
+            height: 45px;
+        }
+        .hd span {
+            display: inline-block;
+            width: 90px;
+            background-color: pink;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .hd span.current {
+            background-color: purple;
+        }
+        .bd div {
+            height: 255px;
+            background-color: purple;
+            display: none;
+        }
+        .bd div.current {
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <div class="hd" id="hd">
+            <span class="current">体育</span>
+            <span >娱乐</span>
+            <span>新闻</span>
+            <span>综合</span>
+        </div>
+        <div class="bd" id="bd">
+            <div class="current">我是体育模块</div>
+            <div>我是娱乐模块</div>
+            <div>我是新闻模块</div>
+            <div>我是综合模块</div>
+        </div>
+    </div>
+    <script>
+        // 1 鼠标放到tab栏上高亮显示，其它tab栏取消高亮显示
+        // 1.1 获取hd中所有的span。注册鼠标经过的事件
+        var spans = document.querySelectorAll('#hd span');
+        var i = 0, len = spans.length;
+        for (; i < len; i++) {
+            var span = spans[i];
+            // 注册事件
+            span.onmouseover = function () {
+                // 取消所有span的高亮显示
+                for (i = 0; i < len; i++) {
+                    spans[i].className = '';
+                }
+                // 1.2 高亮显示，其它项取消高亮
+                this.className = 'current';
+
+
+                // 2 当tab栏高亮显示的时候。找到对应的详细内容 显示，其它详细内容隐藏
+            }
+        }
+
+
+        
+    </script>
+</body>
+</html>
